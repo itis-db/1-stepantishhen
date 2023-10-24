@@ -1,41 +1,37 @@
-INSERT INTO ActivityType (ActivityTypeId, Name)
-VALUES (1, 'Концерт'),
-       (2, 'Мастер класс'),
-       (3, 'Выставка');
+insert into activitytype (activitytypeid, name, sysname) values
+(1, 'Meeting', 'MeetingSys'),
+(2, 'Training', 'TrainingSys'),
+(3, 'Workshop', 'WorkshopSys');
 
-INSERT INTO Activity (ActivityId, ParentId, ActivityTypeId, Name, AreaId)
-VALUES (1, NULL, 1, 'Linken park', 1),
-       (2, 1, 2, 'Street art', 2),
-       (3, 1, 2, 'Лепка', 3),
-       (4, 2, 1, 'Neffex', 1),
-       (5, 2, 3, 'Ван Гог', 3),
-       (6, NULL, 3, 'Современное искуство', 2);
+insert into area (areaid, name) values
+(1, 'Marketing'),
+(2, 'Finance'),
+(3, 'Human Resources');
 
-INSERT INTO Program (ActivityId)
-VALUES (1),
-       (2),
-       (3),
-       (6);
+insert into activity (activityid, activitytypeid, code, name, parentid) values
+(1, 1, 'M101', 'Team Meeting', NULL),
+(2, 2, 'T201', 'Financial Training', 1),
+(3, 1, 'M102', 'Marketing Workshop', 1);
 
-INSERT INTO SubProgram (ActivityId)
-VALUES (4),
-       (5);
+insert into contract (contractid, areaid) values
+(1, 1),
+(2, 2),
+(3, 3);
 
-INSERT INTO Project (ActivityId)
-VALUES (2),
-       (3),
-       (4),
-       (5);
+insert into program (programid, indexnum, yearstart, yearfinish) values
+(1, 10, 2023, 2025),
+(2, 20, 2024, 2026),
+(3, 30, 2025, 2027);
 
-INSERT INTO Contract (ActivityId, AreaId)
-VALUES (3, 1),
-       (4, 2),
-       (6, 3);
+insert into point (pointid, plandate, factdate) values
+(1, '2023-10-01', '2023-10-05'),
+(2, '2023-11-15', '2023-11-20'),
+(3, '2023-12-20', '2023-12-25');
 
-INSERT INTO Point (ActivityId)
-VALUES (1),
-       (2),
-       (3),
-       (4),
-       (5),
-       (6);
+insert into subprogram (subprogramid, indexnum) values
+(1, 5),
+(2, 10);
+
+insert into project (projectid, targetdescr) values
+(1, 'Marketing Campaign Project'),
+(2, 'Financial Analysis Project');
